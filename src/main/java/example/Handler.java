@@ -14,8 +14,13 @@ public class Handler implements RequestHandler<Map<String, String>, Void> {
     @Override
     public Void handleRequest(Map<String, String> event, Context context) {
         LambdaLogger lambdaLogger = context.getLogger();
-        lambdaLogger.log("Invoke successfully!!! Event Type => " + event.getClass());
+        lambdaLogger.log("Invoke successfully!!! Event Type => " + event.getClass() + "\n");
+
+        for (String key : event.keySet()) {
+            lambdaLogger.log("key = " + key + ", value = " + event.get(key) + "\n");
+        }
 
         return null;
     }
+
 }
